@@ -1,9 +1,9 @@
 <?php
 
-namespace TPFileQueue\Jobs;
+namespace TPTaskRunner\Jobs;
 
-use TPFileQueue\Jobs\Tasks\BaseTask;
-use TPFileQueue\Models\Task;
+use TPTaskRunner\Jobs\Tasks\BaseTask;
+use TPTaskRunner\Models\Task;
 use Exception;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Job to run a Task
- * @package TPFileQueue\Jobs
+ * @package TPTaskRunner\Jobs
  */
 class TaskJob extends Job implements ShouldQueue
 {

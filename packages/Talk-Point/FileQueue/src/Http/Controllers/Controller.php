@@ -1,6 +1,6 @@
 <?php
 
-namespace TPFileQueue\Http\Controllers;
+namespace TPTaskRunner\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

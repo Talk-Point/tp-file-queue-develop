@@ -150,7 +150,7 @@ return [
 
         JeroenG\Packager\PackagerServiceProvider::class,
 
-        TPFileQueue\FileQueueServiceProvider::class,
+        TPTaskRunner\FileQueueServiceProvider::class,
 
         /*
          * Application Service Providers...

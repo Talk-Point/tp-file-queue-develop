@@ -1,6 +1,6 @@
 <?php
 
-namespace TPFileQueue\Jobs;
+namespace TPTaskRunner\Jobs;
 
 use Illuminate\Bus\Queueable;
 

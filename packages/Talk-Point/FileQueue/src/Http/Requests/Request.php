@@ -1,6 +1,6 @@
 <?php
 
-namespace TPFileQueue\Http\Requests;
+namespace TPTaskRunner\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

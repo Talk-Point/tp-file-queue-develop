@@ -11,6 +11,6 @@ class ModelExample extends Model
      */
     public function tasks()
     {
-        return $this->morphMany('TPFileQueue\Models\Task', 'taskable');
+        return $this->morphMany('TPTaskRunner\Models\Task', 'taskable');
     }
 }

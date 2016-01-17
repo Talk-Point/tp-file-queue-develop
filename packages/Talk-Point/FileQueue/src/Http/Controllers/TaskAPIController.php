@@ -1,14 +1,14 @@
 <?php
 
-namespace TPFileQueue\Http\Controllers;
+namespace TPTaskRunner\Http\Controllers;
 
-use TPFileQueue\Models\Task;
+use TPTaskRunner\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 /**
  * Class TaskAPIController
- * @package TPFileQueue\Http\Controllers
+ * @package TPTaskRunner\Http\Controllers
  */
 class TaskAPIController extends Controller
 {

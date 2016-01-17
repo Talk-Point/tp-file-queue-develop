@@ -1,6 +1,6 @@
 <?php
 
-namespace TPFileQueue;
+namespace TPTaskRunner;
 
 class SkeletonClass
 {

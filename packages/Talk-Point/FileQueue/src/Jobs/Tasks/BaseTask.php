@@ -1,12 +1,12 @@
 <?php
 
-namespace TPFileQueue\Jobs\Tasks;
+namespace TPTaskRunner\Jobs\Tasks;
 
 use Log;
 
 /**
  * Class BaseTask
- * @package TPFileQueue\Jobs\Tasks
+ * @package TPTaskRunner\Jobs\Tasks
  */
 abstract class BaseTask
 {

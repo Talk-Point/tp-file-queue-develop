@@ -4,15 +4,15 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class TaskSuccess extends \TPFileQueue\Jobs\Tasks\BaseTask {}
-class TaskFailureReturnFalse extends \TPFileQueue\Jobs\Tasks\BaseTask
+class TaskSuccess extends \TPTaskRunner\Jobs\Tasks\BaseTask {}
+class TaskFailureReturnFalse extends \TPTaskRunner\Jobs\Tasks\BaseTask
 {
     public function run()
     {
         return [false, 'Einfach mal so false zurueckgegeben'];
     }
 }
-class TaskFailureThrowException extends \TPFileQueue\Jobs\Tasks\BaseTask
+class TaskFailureThrowException extends \TPTaskRunner\Jobs\Tasks\BaseTask
 {
     public function run()
     {
@@ -28,7 +28,7 @@ class TaskRunJobTest extends TestCase
         $this->assertNotNull($model_example);
 
 
-        $task = new \TPFileQueue\Models\Task();
+        $task = new \TPTaskRunner\Models\Task();
         $task->job_class = $job_class;
         $model_example->tasks()->save($task);
         return [$task, $model_example];

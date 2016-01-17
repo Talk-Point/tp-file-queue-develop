@@ -1,8 +1,8 @@
 <?php
 
-namespace TPFileQueue\Models;
+namespace TPTaskRunner\Models;
 
-use TPFileQueue\Jobs\TaskJob;
+use TPTaskRunner\Jobs\TaskJob;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -16,7 +16,7 @@ use Log;
  * Ein task ist ein einzelener Job der ausgeführt wird und speichert ob er fehlgeschlagen ist oder
  * seine Zustandsänderungen speichert.
  *
- * @package TPFileQueue\Models
+ * @package TPTaskRunner\Models
  * @property integer id
  * @property string job_class
  * @property bool is_runned
