@@ -47,7 +47,7 @@ $model = YouModel::create([]);
 $task = Task::createTask(OrderSuccess::class);
 $model->tasks()->save($task);
 $task->run();
-``
+```
 
 ## Change log
 
