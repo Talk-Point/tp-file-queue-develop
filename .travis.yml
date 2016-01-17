@@ -8,13 +8,10 @@ php:
 services:
   - mysql
 
-env:
-  - DB=mysql
-
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
-  - mysql -e 'create database IF NOT EXISTS forge'
+  - mysql --execute "CREATE DATABASE IF NOT EXISTS \`forge\`;" --user=root
   - php artisan migrate:install --no-interaction -vvv
 
 script: phpunit
