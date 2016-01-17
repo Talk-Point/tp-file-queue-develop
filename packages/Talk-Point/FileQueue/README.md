@@ -18,12 +18,36 @@ Via Composer
 $ composer require Talk-Point/TPFileQueue
 ```
 
+Add to the `app/config.php` file in `providers`
+
+```php
+'providers' => [
+    TPFileQueue\FileQueueServiceProvider::class,
+]
+```
+
 ## Usage
 
+One Model can have many tasks, so that you create a Model and add the tasks relation.
+
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+/**
+ * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+ */
+public function tasks()
+{
+    return $this->morphMany('TPFileQueue\Models\Task', 'taskable');
+}
 ```
+
+To create a new task for your model.
+
+```php
+$model = YouModel::create([]);
+$task = Task::createTask(OrderSuccess::class);
+$model->tasks()->save($task);
+$task->run();
+``
 
 ## Change log
 
