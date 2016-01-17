@@ -14,7 +14,7 @@ env:
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
-  - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'create database IF NOT EXISTS forge;create database IF NOT EXISTS forge;'; fi"
+  - mysql -e 'create database IF NOT EXISTS forge'
   - php artisan migrate:install --no-interaction -vvv
 
 script: phpunit
