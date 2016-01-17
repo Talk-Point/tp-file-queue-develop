@@ -1,0 +1,46 @@
+{
+    "name": "Talk-Point/TPFileQueue",
+    "type": "library",
+    "description": "Laravel Framework for a file queue with S3 support",
+    "keywords": [
+        "Talk-Point",
+        "TPFileQueue"
+    ],
+    "homepage": "https://github.com/Talk-Point/TPFileQueue",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Talk-Point-IT",
+            "email": "it@talk-point.de",
+            "homepage": "http://www.talk-point.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TPFileQueue\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TPFileQueue\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
