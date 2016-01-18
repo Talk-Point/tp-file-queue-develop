@@ -150,6 +150,8 @@ return [
 
         JeroenG\Packager\PackagerServiceProvider::class,
 
+        TPTaskRunner\FileQueueServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -158,7 +160,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Talk-Point\FileQueue\FileQueueServiceProvider::class,
 
     ],
 

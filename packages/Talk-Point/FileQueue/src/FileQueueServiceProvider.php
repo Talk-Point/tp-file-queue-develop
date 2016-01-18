@@ -1,6 +1,6 @@
 <?php
 
-namespace TPFileQueue;
+namespace TPTaskRunner;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,12 @@ class FileQueueServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (! $this->app->routesAreCached()) {
+            require __DIR__.'/Http/routes.php';
+        }
+        $this->publishes([
+            __DIR__.'/database/migrations/' => database_path('migrations')
+        ], 'migrations');
     }
 
     /**

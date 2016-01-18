@@ -1,12 +1,12 @@
 {
-    "name": "Talk-Point/TPFileQueue",
+    "name": "Talk-Point/TPTaskRunner",
     "type": "library",
     "description": "Laravel Framework for a file queue with S3 support",
     "keywords": [
         "Talk-Point",
-        "TPFileQueue"
+        "TPTaskRunner"
     ],
-    "homepage": "https://github.com/Talk-Point/TPFileQueue",
+    "homepage": "https://github.com/Talk-Point/TPTaskRunner",
     "license": "MIT",
     "authors": [
         {
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "TPFileQueue\\": "src"
+            "TPTaskRunner\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TPFileQueue\\Test\\": "tests"
+            "TPTaskRunner\\Test\\": "tests"
         }
     },
     "scripts": {

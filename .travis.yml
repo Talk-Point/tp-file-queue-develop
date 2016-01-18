@@ -5,9 +5,15 @@ php:
   - hhvm
   - nightly
 
+services:
+  - mysql
+
 before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database forge;'
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
+  - php artisan migrate --no-interaction -vvv
 
 script: phpunit
 
