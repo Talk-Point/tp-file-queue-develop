@@ -12,6 +12,9 @@ Via Composer
 
 ``` bash
 $ composer require Talk-Point/TPTaskRunner
+$ php artisan queue:table
+$ php artisan queue:failed-table
+$ php artisan migrate --seed
 ```
 
 Add to the `app/config.php` file in `providers`
