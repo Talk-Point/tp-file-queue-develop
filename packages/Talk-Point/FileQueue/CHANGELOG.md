@@ -7,4 +7,4 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## 1.0.0 - 205-01-19
 
 ### Added
-- Tasks 
+- Tasks
