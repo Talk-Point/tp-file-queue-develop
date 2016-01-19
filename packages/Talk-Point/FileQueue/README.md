@@ -12,6 +12,9 @@ Via Composer
 
 ``` bash
 $ composer require Talk-Point/TPTaskRunner
+$ php artisan queue:table
+$ php artisan queue:failed-table
+$ php artisan migrate --seed
 ```
 
 Add to the `app/config.php` file in `providers`
@@ -31,9 +34,21 @@ To create a new task for your model.
 
 ```php
 $model = YouModel::create([]);
-$task = Task::createTask(OrderSuccess::class);
+$task = \TPTaskRunner\Models\Task::createTask($job_class);
 $model->tasks()->save($task);
 $task->run();
+```
+
+To create a new task with data:
+
+```php
+# Create
+$task = \TPTaskRunner\Models\Task::createTaskWithData('Class', ['key' => 'value']);
+$task->save();
+
+# In Job Class
+$o = $task_load->getJSONData();
+$data = $o->key;
 ```
 
 ## Change log
