@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\URL;
-use League\Flysystem\Exception;
+use Exception;
 use Log;
 
 /**
@@ -149,7 +149,7 @@ class Task extends Model
      */
     public function run($force=false)
     {
-        if ($force==false) {
+        if ($force === false) {
             if ($this->is_success) {
                 return false;
             }
