@@ -35,14 +35,17 @@ class TaskRunJobTest extends TestCase
 
     public function test_task_success()
     {
+        /** @var \TPTaskRunner\Models\Task $task */
         list($task, $order) = $this->createTaskWithJobClass('TaskSuccess');
+        $task->setJSONData(['string' => 'data']);
         $this->visit('api/v1/tasks/run/'.strval($task->id))
              ->seeJson(['start' => true]);
         $this->seeInDatabase('tasks', [
             'id' => $task->id,
             'is_runned' => true,
             'is_success' => true,
-            'is_failure' => false
+            'is_failure' => false,
+            'data' => "{\"string\":\"data\"}"
         ]);
     }
 

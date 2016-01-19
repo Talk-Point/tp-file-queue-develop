@@ -71,8 +71,7 @@ class Task extends Model
      */
     public static function createTaskWithData($job_class, $array)
     {
-        $task = new Task();
-        $task->job_class = $job_class;
+        $task = Task::createTask($job_class);
         $task->setJSONData($array);
         return $task;
     }
@@ -110,6 +109,7 @@ class Task extends Model
     public function setJSONData($array)
     {
         $this->data = json_encode($array);
+        $this->save();
     }
 
     /**
