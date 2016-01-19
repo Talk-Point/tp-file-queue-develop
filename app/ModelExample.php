@@ -3,14 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use TPTaskRunner\Models\TaskRelationBaseModel;
 
-class ModelExample extends Model
+class ModelExample extends TaskRelationBaseModel
 {
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function tasks()
-    {
-        return $this->morphMany('TPTaskRunner\Models\Task', 'taskable');
-    }
+
 }
