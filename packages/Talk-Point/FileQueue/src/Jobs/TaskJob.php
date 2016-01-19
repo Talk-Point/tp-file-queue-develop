@@ -26,7 +26,7 @@ class TaskJob extends Job implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param string $class Task Class
+     * @param string $task_id Task Primary Key
      */
     public function __construct($task_id)
     {
