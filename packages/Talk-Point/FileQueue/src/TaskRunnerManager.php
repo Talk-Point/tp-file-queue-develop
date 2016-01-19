@@ -2,7 +2,7 @@
 
 namespace TPTaskRunner;
 
-class SkeletonClass
+class TaskRunnerManager
 {
     /**
      * Create a new Skeleton Instance

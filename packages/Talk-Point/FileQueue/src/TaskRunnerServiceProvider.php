@@ -4,7 +4,7 @@ namespace TPTaskRunner;
 
 use Illuminate\Support\ServiceProvider;
 
-class FileQueueServiceProvider extends ServiceProvider
+class TaskRunnerServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.

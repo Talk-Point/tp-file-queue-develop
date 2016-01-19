@@ -18,23 +18,14 @@ Add to the `app/config.php` file in `providers`
 
 ```php
 'providers' => [
-    TPTaskRunner\FileQueueServiceProvider::class,
+    TPTaskRunner\TaskRunnerServiceProvider::class,
 ]
 ```
 
 ## Usage
 
-One Model can have many tasks, so that you create a Model and add the tasks relation.
-
-``` php
-/**
- * @return \Illuminate\Database\Eloquent\Relations\MorphMany
- */
-public function tasks()
-{
-    return $this->morphMany('TPTaskRunner\Models\Task', 'taskable');
-}
-```
+To use the tasks polymorph relation extends your model from the `TPTaskRunner\Models\TaskRelationBaseModel` model from the Framework.
+Than you can get the tasks with the method `$model->tasks()->get()`
 
 To create a new task for your model.
 
