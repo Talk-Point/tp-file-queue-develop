@@ -3,16 +3,17 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use TPTaskRunner\Jobs\Tasks\BaseTask;
 
-class TaskSuccess extends \TPTaskRunner\Jobs\Tasks\BaseTask {}
-class TaskFailureReturnFalse extends \TPTaskRunner\Jobs\Tasks\BaseTask
+class TaskSuccess extends BaseTask {}
+class TaskFailureReturnFalse extends BaseTask
 {
     public function run()
     {
         return [false, 'Einfach mal so false zurueckgegeben'];
     }
 }
-class TaskFailureThrowException extends \TPTaskRunner\Jobs\Tasks\BaseTask
+class TaskFailureThrowException extends BaseTask
 {
     public function run()
     {
