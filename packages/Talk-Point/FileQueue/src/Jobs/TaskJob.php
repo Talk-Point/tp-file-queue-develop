@@ -43,7 +43,7 @@ class TaskJob extends Job implements ShouldQueue
         /** @var Task $task */
         $task = Task::find($this->task_id);
         if (is_null($task)) {
-            throw new \Exception('TaskJob not found task with id', ['task_id' => $this->task_id]);
+            throw new Exception('TaskJob not found task with id', ['task_id' => $this->task_id]);
         }
         $task->start_running();
 
@@ -52,9 +52,11 @@ class TaskJob extends Job implements ShouldQueue
             $this->delete();
             return null;
         }
+
         $className = $task->job_class;
-        /** @var BaseTask $task */
+        /** @var Task $task */
         $object = $task->taskable()->first();
+        /** @var BaseTask $job */
         $job = new $className($object);
 
         try {
