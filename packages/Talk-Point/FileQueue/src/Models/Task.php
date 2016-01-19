@@ -17,15 +17,16 @@ use Log;
  * seine Zustandsänderungen speichert.
  *
  * @package TPTaskRunner\Models
- * @property integer id
- * @property string job_class
- * @property bool is_runned
- * @property bool is_failure
- * @property Carbon is_failure_at
- * @property bool is_success
- * @property Carbon is_success_at
- * @property Carbon next_run_at
- * @property string failure_message
+ * @property integer    id              PK
+ * @property string     job_class       Class that would be run
+ * @property string     data            Text for saving Data for the Task
+ * @property bool       is_runned       if the tasks was running
+ * @property bool       is_failure      if the task has a failure
+ * @property Carbon     is_failure_at   if task has failure then this is the date
+ * @property bool       is_success      if task is success running
+ * @property Carbon     is_success_at   if task is susccess this is the date
+ * @property Carbon     next_run_at     when the tasks would start
+ * @property string     failure_message the error message from the class thats runned
  */
 class Task extends Model
 {
@@ -51,7 +52,7 @@ class Task extends Model
     }
 
     /**
-     * Create Task
+     * Konstruktor create task
      * @param string $job_class
      * @return Task
      */
@@ -59,6 +60,20 @@ class Task extends Model
     {
         $task = new Task();
         $task->job_class = $job_class;
+        return $task;
+    }
+
+    /**
+     * Konstruktor create task with data
+     * @param $job_class
+     * @param $array
+     * @return Task
+     */
+    public static function createTaskWithData($job_class, $array)
+    {
+        $task = new Task();
+        $task->job_class = $job_class;
+        $task->setJSONData($array);
         return $task;
     }
 
@@ -86,6 +101,24 @@ class Task extends Model
     public function taskable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * Save Array in Task
+     * @param $array
+     */
+    public function setJSONData($array)
+    {
+        $this->data = json_encode($array);
+    }
+
+    /**
+     * Get Array in Task
+     * @return mixed
+     */
+    public function getJSONData()
+    {
+        return json_decode($this->data);
     }
 
     /**

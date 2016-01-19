@@ -28,9 +28,7 @@ class TaskRunJobTest extends TestCase
         $model_example = factory(\App\ModelExample::class)->create();
         $this->assertNotNull($model_example);
 
-
-        $task = new \TPTaskRunner\Models\Task();
-        $task->job_class = $job_class;
+        $task = \TPTaskRunner\Models\Task::createTask($job_class);
         $model_example->tasks()->save($task);
         return [$task, $model_example];
     }
