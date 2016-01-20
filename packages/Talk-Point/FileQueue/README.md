@@ -3,6 +3,7 @@
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/Talk-Point/tp-task-runner-develop.svg?branch=master)](https://travis-ci.org/Talk-Point/tp-task-runner-develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Talk-Point/tp-task-runner/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Talk-Point/tp-task-runner/?branch=master)
+[![Build Status](https://semaphoreci.com/api/v1/projects/50fd156d-6b77-49df-b971-98b150fd70bc/667096/badge.svg)](https://semaphoreci.com/k-st-tp/tp-task-runner-develop)
 
 Task runner framework for Laravel.
 
