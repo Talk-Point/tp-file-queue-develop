@@ -7,6 +7,8 @@
 
 Task runner framework for Laravel.
 
+A task control a job on a queue, so you have controll over many jobs on the queue.
+
 ## Install
 
 Via Composer
