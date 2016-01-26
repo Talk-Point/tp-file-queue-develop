@@ -7,7 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## 1.0.2 - 2016-01-26
 
 ### Fixed
-- Task: add Model attributes: guard, fill, cast
+- Task: add Model attributes: `guard`, `fill`, `cast`
 
 ## 1.0.1 - 2016-01-19
 
