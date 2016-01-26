@@ -33,6 +33,34 @@ class Task extends Model
     use DispatchesJobs;
 
     /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    public $casts = ['is_runned' => 'boolean', 'is_success' => 'boolean', 'is_failure' => 'boolean',];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'is_failure_at', 'is_success_at', 'next_run_at'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['job_class', 'data', 'next_run_at'];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id', 'is_runned', 'is_failure', 'is_failure_at', 'is_success', 'is_success_at', 'failure_message'];
+
+    /**
      * Append to Object
      * @var array
      */
@@ -84,13 +112,6 @@ class Task extends Model
     {
         parent::__construct($attributes);
     }
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['created_at', 'updated_at', 'is_failure_at', 'is_success_at', 'next_run_at'];
 
     /**
      * Get the order for this task
