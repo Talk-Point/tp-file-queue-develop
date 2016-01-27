@@ -23,9 +23,6 @@ class TaskAPIController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-
-
         try {
             /** @var Collection $queues */
             $tasks = RESTQuery::create(Task::class)->query()->get();
