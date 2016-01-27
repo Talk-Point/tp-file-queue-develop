@@ -105,11 +105,20 @@ class Task extends Model
     }
 
     /**
-     * Run all Tasks
+     * Run all Tasks thats ready for that
+     * @return array list of id`s with runned tasks
      */
-    public static function cronjob()
+    public static function cronJob()
     {
+        $tasks = Task::cron();
+        $started_tasks = [];;
+        /** @var Task $task */
+        foreach($tasks as $task) {
+            array_push($started_tasks, [$task->id]);
+            $task->run();
+        }
 
+        return $started_tasks;
     }
 
     /**
