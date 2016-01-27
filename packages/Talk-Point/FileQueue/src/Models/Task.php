@@ -105,6 +105,14 @@ class Task extends Model
     }
 
     /**
+     * Run all Tasks
+     */
+    public static function cronjob()
+    {
+
+    }
+
+    /**
      * Task constructor.
      * @param array $attributes
      */
@@ -148,9 +156,12 @@ class Task extends Model
      * @return mixed
      * @deprecated
      */
-    public function scopeCron($query)
+    public function scopeCron($query, $date=null)
     {
-        return $query->where('is_runned', false);
+        if (is_null($date)) {
+            $date = Carbon::now();
+        }
+        return $query->where('is_runned', false)->whereDate('next_run_at', '<=', $date);
     }
 
     /**
