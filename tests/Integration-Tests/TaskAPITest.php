@@ -8,8 +8,7 @@ class TaskAPITest extends TestCase
 {
     public function test_index()
     {
-        $task = \TPTaskRunner\Models\Task::get()->first();
-        $this->assertNotNull($task);
+        $task = factory(\TPTaskRunner\Models\Task::class)->create();
 
         $this->visit(URL::route('api.v1.tasks.index'))
              ->seeJson(['id' => $task->id]);
@@ -17,7 +16,7 @@ class TaskAPITest extends TestCase
 
     public function test_show()
     {
-        $task = \TPTaskRunner\Models\Task::get()->first();
+        $task = factory(\TPTaskRunner\Models\Task::class)->create();
         $this->assertNotNull($task);
 
         $this->visit(URL::route('api.v1.tasks.show', $task->id))
@@ -79,7 +78,7 @@ class TaskAPITest extends TestCase
 
     public function test_destroy()
     {
-        $task = \TPTaskRunner\Models\Task::get()->first();
+        $task = factory(\TPTaskRunner\Models\Task::class)->create();
         $this->assertNotNull($task);
 
         $this->seeInDatabase('tasks', ['id' => $task->id]);
