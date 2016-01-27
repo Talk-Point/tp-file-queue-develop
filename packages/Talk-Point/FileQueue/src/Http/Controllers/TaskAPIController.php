@@ -2,6 +2,10 @@
 
 namespace TPTaskRunner\Http\Controllers;
 
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\QueryException;
+use TPREST\Http\RESTQuery;
 use TPTaskRunner\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -21,7 +25,16 @@ class TaskAPIController extends Controller
     {
         $tasks = Task::all();
 
-        return response()->json($tasks);
+
+        try {
+            /** @var Collection $queues */
+            $tasks = RESTQuery::create(Task::class)->query()->get();
+            return response()->json($tasks);
+        } catch (QueryException $e) {
+            return response()->json(['message' => 'DB Query Exception', 'invalid' => $e->errorInfo[2]], 422);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'DB Query Exception'], 422);
+        }
     }
 
     /**
