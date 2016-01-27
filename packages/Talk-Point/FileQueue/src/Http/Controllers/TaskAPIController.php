@@ -114,6 +114,6 @@ class TaskAPIController extends Controller
         $task = Task::findOrFail($id);
         $force_value = Input::get('force', false);
         $rv = $task->run($force=$force_value);
-        return response()->json(['start' => $rv]);
+        return response()->json(['run' => $rv]);
     }
 }

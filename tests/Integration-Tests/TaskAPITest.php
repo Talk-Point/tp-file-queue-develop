@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use TPTaskRunner\Jobs\Tasks\BaseTask;
+
+class TaskSuccess2 extends BaseTask {}
 
 class TaskAPITest extends TestCase
 {
@@ -88,5 +91,15 @@ class TaskAPITest extends TestCase
             ->seeStatusCode(200);
 
         $this->dontSeeInDatabase('tasks', ['id' => $task->id]);
+    }
+
+    public function test_run()
+    {
+        $task = factory(\TPTaskRunner\Models\Task::class)->create();
+        $task->job_class = TaskSuccess2::class;
+
+        $this->visit(URL::route('api.v1.tasks.run', $task->id))
+            ->seeJson(['run' => true])
+            ->seeStatusCode(200);
     }
 }

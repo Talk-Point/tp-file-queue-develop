@@ -39,7 +39,7 @@ class TaskRunJobTest extends TestCase
         list($task, $order) = $this->createTaskWithJobClass('TaskSuccess');
         $task->setJSONData(['string' => 'data']);
         $this->visit('api/v1/tasks/run/'.strval($task->id))
-             ->seeJson(['start' => true]);
+             ->seeJson(['run' => true]);
         $this->seeInDatabase('tasks', [
             'id' => $task->id,
             'is_runned' => true,
@@ -53,7 +53,7 @@ class TaskRunJobTest extends TestCase
     {
         list($task, $order) = $this->createTaskWithJobClass('TaskFailureReturnFalse');
         $this->visit('api/v1/tasks/run/'.strval($task->id))
-            ->seeJson(['start' => true]);
+            ->seeJson(['run' => true]);
         $this->seeInDatabase('tasks', [
             'id' => $task->id,
             'is_runned' => true,
@@ -67,7 +67,7 @@ class TaskRunJobTest extends TestCase
     {
         list($task, $order) = $this->createTaskWithJobClass('TaskFailureThrowException');
         $this->visit('api/v1/tasks/run/'.strval($task->id))
-            ->seeJson(['start' => true]);
+            ->seeJson(['run' => true]);
         $this->seeInDatabase('tasks', [
             'id' => $task->id,
             'is_runned' => true,
@@ -80,7 +80,7 @@ class TaskRunJobTest extends TestCase
     {
         list($task, $order) = $this->createTaskWithJobClass('TaskClassNotExists');
         $this->visit('api/v1/tasks/run/'.strval($task->id))
-            ->seeJson(['start' => true]);
+            ->seeJson(['run' => true]);
         $this->seeInDatabase('tasks', [
             'id' => $task->id,
             'is_runned' => true,
