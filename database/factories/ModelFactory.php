@@ -26,3 +26,9 @@ $factory->define(\App\ModelExample::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+$factory->define(\TPTaskRunner\Models\Task::class, function (Faker\Generator $faker) {
+    return [
+        'job_class' => $faker->uuid
+    ];
+});

@@ -5,6 +5,7 @@ namespace TPTaskRunner\Http\Controllers;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
 use TPREST\Http\RESTQuery;
 use TPTaskRunner\Models\Task;
 use Illuminate\Http\Request;
@@ -35,16 +36,6 @@ class TaskAPIController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,7 +43,13 @@ class TaskAPIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $task = Task::create(Input::all());
+            $task->save();
+            return response()->json(['created' => true, 'task' => $task], 201);
+        } catch (Exception $e) {
+            return response()->json(['created' => false], 500);
+        }
     }
 
     /**
@@ -68,17 +65,6 @@ class TaskAPIController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -87,7 +73,17 @@ class TaskAPIController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            /** @var Task $task */
+            $task = Task::findOrFail($id);
+
+            $task->fill(Input::all());
+            $task->save();
+            return response()->json(['updated' => true], 200);
+        } catch (Exception $e) {
+            Log::emergency('TaskAPIController::update can not update task', ['task_id' => $id]);
+            return response()->json(['updated' => false], 500);
+        }
     }
 
     /**
@@ -98,7 +94,14 @@ class TaskAPIController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $task = Task::findOrFail($id);
+            $task->delete();
+            return response()->json(['destroy' => true]);
+        } catch (Exception $e) {
+            Log::emergency('TaskAPIController::destroy can not destroy task', ['task_id' => $id]);
+            return response()->json(['destroy' => true], 500);
+        }
     }
 
     /**
