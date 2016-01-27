@@ -18,7 +18,8 @@
     ],
     "require": {
         "illuminate/support": "~5.1",
-        "php" : ">=5.6.14"
+        "php" : ">=5.6.14",
+        "Talk-Point/TPREST": "dev-develop"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*",
@@ -42,5 +43,8 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
-    }
+    },
+    "repositories": [
+        {"type": "composer", "url": "http://46.101.144.157:8081/repo/private/"}
+    ]
 }
