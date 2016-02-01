@@ -3,6 +3,7 @@
 namespace TPTaskRunner\Jobs\Tasks;
 
 use Log;
+use TPTaskRunner\Models\Task;
 
 /**
  * Class BaseTask
@@ -11,6 +12,10 @@ use Log;
 abstract class BaseTask
 {
     protected $object;
+    /**
+     * @var Task task instance thats running
+     */
+    public $task;
 
     public function __construct($object)
     {

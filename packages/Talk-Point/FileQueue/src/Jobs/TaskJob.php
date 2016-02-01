@@ -58,6 +58,7 @@ class TaskJob extends Job implements ShouldQueue
         $object = $task->taskable()->first();
         /** @var BaseTask $job */
         $job = new $className($object);
+        $job->task = $task;
 
         try {
             list($rv, $errormessage) = $job->run();

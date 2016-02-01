@@ -4,11 +4,10 @@ All Notable changes to `TPTaskRunner` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-
-## 1.1.0 - 2016-01-28
+## 1.2.0 - 2016-02-01
 
 ### Added
-- implement Task retries
+- implement TaskJob can access the task object
 
 ### Deprecated
 - Nothing
@@ -22,6 +21,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Security
 - Nothing
 
+## 1.1.0 - 2016-01-28
+
+### Added
+- implement Task retries
 
 ## 1.1.0 - 2016-01-27
 
